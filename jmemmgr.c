@@ -584,7 +584,7 @@ realize_virt_arrays (j_common_ptr cinfo)
 {
   my_mem_ptr mem = (my_mem_ptr) cinfo->mem;
   long bytesperrow, space_per_minheight, maximum_space;
-  long avail_mem, minheights, max_minheights;
+  size_t avail_mem, minheights, max_minheights;
   jvirt_sarray_ptr sptr;
   jvirt_barray_ptr bptr;
 
@@ -614,7 +614,7 @@ realize_virt_arrays (j_common_ptr cinfo)
 
   /* Determine amount of memory to actually use; this is system-dependent. */
   avail_mem = jpeg_mem_available(cinfo, space_per_minheight, maximum_space,
-				 (long) mem->total_space_allocated);
+				 mem->total_space_allocated);
 
   /* If the maximum space needed is available, make all the buffers full
    * height; otherwise parcel it out with the same number of minheights

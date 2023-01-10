@@ -69,9 +69,9 @@ jpeg_free_large (j_common_ptr cinfo, void FAR * object, size_t sizeofobject)
  * This routine computes the total memory space available for allocation.
  */
 
-GLOBAL(long)
+size_t
 jpeg_mem_available (j_common_ptr cinfo, long min_bytes_needed,
-		    long max_bytes_needed, long already_allocated)
+		    long max_bytes_needed, size_t already_allocated)
 {
   if (cinfo->mem->max_memory_to_use)
     return cinfo->mem->max_memory_to_use - already_allocated;
